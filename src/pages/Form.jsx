@@ -16,7 +16,10 @@ function Form() {
     phoneNumber: "",
     expert: "",
     specialization: "",
-    checked: false,
+    radio: {
+      radio1: "radio1",
+      radio2: "radio2",
+    },
   });
 
   const titles = ["Sign UP", "Personal Info", "More Info"];
@@ -39,12 +42,12 @@ function Form() {
       <div>
         <div>Progress Bar</div>
       </div>
-      <div className="sm:mx-auto sm:w-full sm:max-wmd">
+      <form className="sm:mx-auto sm:w-full sm:max-wmd">
         <img className="mx-auto h-24 w-auto" src={Logo} alt="/" />
         <h1 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
           {titles[page]}
         </h1>
-      </div>
+      </form>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow md:rounded-lg sm:px-10">
           <div>{PageDisplay()}</div>

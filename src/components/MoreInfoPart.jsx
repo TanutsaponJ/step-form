@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-function MoreInfoPart({ data, setDate }) {
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = (e) => {
-    setChecked({ ...checked, [e.target.value]: e.target.checked });
+function MoreInfoPart({ data, setData }) {
+  const onChangeChecked = (e) => {
+    console.log(e);
+    setData(() => ({
+      ...data,
+      radio: e.target.value,
+    }));
   };
 
   return (
@@ -18,7 +20,7 @@ function MoreInfoPart({ data, setDate }) {
         <textarea
           cols="19"
           rows="5"
-          onChange={(e) => setDate({ ...data, specialization: e.target.value })}
+          onChange={(e) => setData({ ...data, expert: e.target.value })}
           value={data.expert}
           id="expert"
           placeholder="กรอกข้อมูลในช่องนี้..."
@@ -37,7 +39,7 @@ function MoreInfoPart({ data, setDate }) {
           cols="19"
           rows="5"
           placeholder="กรอกข้อมูลในช่องนี้..."
-          onChange={(e) => setDate({ ...data, specialization: e.target.value })}
+          onChange={(e) => setData({ ...data, specialization: e.target.value })}
           value={data.specialization}
           id="username"
           className="block h-15 w-full appearance-none rounded-md border border-gray-300 px-3 py-2
@@ -57,26 +59,26 @@ function MoreInfoPart({ data, setDate }) {
       <div className="flex h-15  w-full justify-between items-center ">
         <div className="flex items-center gap-2">
           <input
-            onChange={handleChange}
-            name="checkbox1"
-            value={data.checkbox1}
-            type="checkbox"
-            id="checkbox1"
-            className="w-3 h-3 rounded-lg "
+            onChange={onChangeChecked}
+            name="radio"
+            value={data.radio.radio1}
+            type="radio"
+            id="radio1"
+            className="w-4 h-4 rounded-lg "
           />
-          <p>ยินยอม</p>
+          ยินยอม
         </div>
 
         <div className="flex items-center gap-2">
           <input
-            name="checkbox2"
-            onChange={handleChange}
-            value={checked.checkbox2}
-            type="checkbox"
-            id="checkbox2"
-            className="w-3 h-3 rounded-lg"
+            onChange={onChangeChecked}
+            name="radio"
+            value={data.radio.radio2}
+            type="radio"
+            id="radio2"
+            className="w-4 h-4 rounded-lg"
           />
-          <p>ไม่ยินยอม</p>
+          ไม่ยินยอม
         </div>
       </div>
     </div>
